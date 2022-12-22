@@ -26,3 +26,31 @@ a{
 .hdr_link:hover{
   color: slateblue;
 }
+.cards_main{
+  padding: 25px;
+}
+.ff{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.card_prod{
+  padding: 15px;
+  width: 350px;
+  /* border: 1px solid; */
+  border-radius: 15px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card_prod:hover{
+  background-color: rgb(224, 224, 224);
+}
+.title_prod{
+  color: #818181;
+}
+.img_crd{
+  border-radius: 8px;
+}
