@@ -34,7 +34,7 @@
  
 
 ### Выполнить с использованием:
-- django/flask (Front + Back)
+- django/flask (Back)
 - mysql/postgresql (Back)
 - docker (Back)
 - React.js или свое на выбор (Front)
