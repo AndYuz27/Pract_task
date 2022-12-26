@@ -4,7 +4,9 @@ const Card = (fn) =>{
         <div className="card_main">
                 <table>
                     {/* <tr><th>Данные с карточки</th></tr> */}
-                    <tr><td>Name product: {fn.prod.name}  price: {fn.prod.price} </td></tr>
+                    <tr><td>Name product: {fn.prod.name_prod}<br/>  price: {fn.prod.price}
+                    <br/> barnd: {fn.prod.brand} 
+                    <br/> <a href={fn.prod.link}>ссылка на товар</a>  </td></tr>
                 </table>
         </div>
     )
