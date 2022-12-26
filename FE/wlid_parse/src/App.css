@@ -58,9 +58,28 @@ a{
   border-radius: 8px;
 }
 .background{
-  padding: 50px;
-  width: 89.4%;
-  height: 800px;
-  background: rgb(2,0,36);
+  width: 100%;
+  min-height: 100%;
+    background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,171,1) 0%, rgba(166,0,185,1) 100%);
+}
+.txt_bg{
+  padding: 50px;
+}
+.big_logo{
+  padding-top: 50px;
+}
+.wild-logo{
+  width: 300px;
+}
+
+.txt_logo{
+  font-size: 24pt;
+  font-family: Montserrat;
+  color: white
+}
+
+td{
+  padding: 5px;
+  border: 1px solid;
 }
