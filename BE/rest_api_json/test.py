@@ -109,15 +109,19 @@ def get_content(shard, query, low_price=None, top_price=None):
     # вставляем ценовые рамки для уменьшения выдачи, вилбериес отдает только 100 страниц
     headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
     data_list = []
-    for page in range(1, 101):
+    for page in range(1):
         print(f"Сбор позиций со страницы {page} из 100")
         # url = f"https://wbxcatalog-ru.wildberries.ru/{shard}" \
         #       f"/catalog?appType=1&curr=rub&dest=-1029256,-102269,-1278703,-1255563" \
         #       f"&{query}&lang=ru&locale=ru&sort=sale&page={page}" \
         #       f"&priceU={low_price * 100};{top_price * 100}"
         url = f"https://catalog.wb.ru/catalog/{shard}/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499" \
-              f"&locale=ru&page={page}&priceU={low_price * 100};{top_price * 100}" \
+              f"&locale=ru&page=1&priceU={low_price * 100};{top_price * 100}" \
               f"&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&{query}"
+
+#https://catalog.wb.ru/catalog/{shard}/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499&locale=ru&page=1&priceU={low_price * 100};{top_price * 100}&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&{query}
+#https://catalog.wb.ru/catalog/rooms/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499&locale=ru&page=1&priceU=200000;3000000&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&subject=4806;7612;7696;7697;7698
+        print(url)
         r = requests.get(url, headers=headers)
         data = r.json()
         print(f"Добавлено позиций: {len(get_data_from_json(data))}")
@@ -141,7 +145,7 @@ def save_excel(data, filename):
 # data, filename
 def save_txt(data, filename):
     print("сохранение в txt")
-    with open(f"hello_{filename}.json", "w", encoding="utf-8") as file:
+    with open("data.json", "w", encoding="utf-8") as file:
         # file.write("[")
         # for  line in data:
             # file.write(f"{line},\n")

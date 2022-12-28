@@ -17,9 +17,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
 app.config['JSON_AS_ASCII'] = False
 
-
-
-
 @app.route('/')
 def index():
 
@@ -38,16 +35,13 @@ def ddd():
 def hello():
     # if key doesn't exist, returns None
     url = request.args.get('url')
-    low_price = request.args.get('min_price')
-    top_price = request.args.get('max_price')
-
-    urltop = ("https://www.wildberries.ru/catalog/"+ url)
+    min_price = request.args.get('min_price')
+    max_price = request.args.get('max_price')
 
     # return '''<h1>The language value is: {}</h1>'''.format(language)
-    print("url " ,urltop)
-    print("min_price " ,low_price)
-    print("max_price " ,top_price)
-
+    print("url " ,url)
+    print("min_price " ,min_price)
+    print("max_price " ,max_price)
     return "data is sended"
 
 
