@@ -65,3 +65,58 @@ def search_category_in_catalog(url, catalog_list):
                 pass
     except:
         print("Данный раздел не найден!")
+
+
+def get_data_from_json(json_file):
+    """извлекаем из json интересующие нас данные"""
+    data_list = []
+    for data in json_file["data"]["products"]:
+        try:
+            price = int(data["priceU"] / 100)
+        except:
+            price = 0
+        data_list.append({
+            "name_prod": data["name"],
+            "id": data["id"],
+            "sale": data["sale"],
+            "price": price,
+            "sale_price": int(data["salePriceU"] / 100),
+            "brand": data["brand"],
+            "brand_id": int(data["brandId"]),
+            "feedbacks": data["feedbacks"],
+            "rating": data["rating"],
+            "link": f"https://www.wildberries.ru/catalog/{data['id']}/detail.aspx?targetUrl=BP"
+        })
+    # print(data_list)
+    return data_list
+
+#shard, query, low_price=None, top_price=None
+
+def get_content():
+    # вставляем ценовые рамки для уменьшения выдачи, вилбериес отдает только 100 страниц
+    headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    data_list = []
+    for page in range(1):
+        print(f"Сбор позиций")
+
+        url = f"https://catalog.wb.ru/catalog/rooms/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499&locale=ru&page=1&priceU=200000;3000000&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&subject=4806;7612;7696;7697;7698" #\
+        #      f"&locale=ru&page=1&priceU={low_price * 100};{top_price * 100}" \
+         #     f"&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&{query}"
+
+#https://catalog.wb.ru/catalog/{shard}/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499&locale=ru&page=1&priceU={low_price * 100};{top_price * 100}&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&{query}
+#https://catalog.wb.ru/catalog/rooms/catalog?appType=1&curr=rub&dest=-1075831,-77677,-398551,12358499&locale=ru&page=1&priceU=200000;3000000&reg=0&regions=64,83,4,38,80,33,70,82,86,30,69,1,48,22,66,31,40&sort=popular&spp=0&subject=4806;7612;7696;7697;7698
+        print(url)
+        r = requests.get(url, headers=headers)
+        data = r.json()
+        print(f"Добавлено позиций: {len(get_data_from_json(data))}")
+        # print(get_data_from_json(data))
+        if len(get_data_from_json(data)) > 0:
+            data_list.extend(get_data_from_json(data))
+        else:
+            print(f"Сбор данных завершен.")
+            break
+    print(data_list)
+    return data_list
+
+
+get_content()
