@@ -38,7 +38,7 @@ a{
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-.card_prod{
+.card_prod {
   padding: 15px;
   width: 350px;
   /* border: 1px solid; */
@@ -48,14 +48,18 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 11px grey;
 }
 .card_prod:hover{
   background-color: rgb(224, 224, 224);
+  box-shadow: 0px 0px 15px black;
+
 }
 .title_prod{
   color: #818181;
 }
 .img_crd{
+  width: 250px;
   border-radius: 8px;
 }
 .background{

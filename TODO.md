@@ -36,5 +36,5 @@
 ### Выполнить с использованием:
 - django/flask (Back)
 - mysql/postgresql (Back)
-- docker (Back)
+- docker (чекнуть API)
 - React.js или свое на выбор (Front)

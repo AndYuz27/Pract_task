@@ -24,7 +24,7 @@ useEffect(() => {
 if (!isLoaded) {
     return(
           <table>
-        <tr><th>Данные с карточки</th></tr>
+        <tr><th>Прим: Api может грузится долго, т.к. он залит на Repl.it</th></tr>
         <tr><td>
     <div>Загрузка данных...</div>
     </td></tr>
@@ -35,10 +35,8 @@ if (!isLoaded) {
         <div className="cards_main">
                   <Link to="/search" /*className="hdr_link"*/>Поиск</Link>
         <div className="ff">
-      <table>
-        <tr><th>Данные с карточки</th></tr>
+
         {pords.map((el, index) => {return <Card key={index} prod={el}/>})}
-      </table>
       </div>
       </div>
     );
