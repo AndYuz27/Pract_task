@@ -179,8 +179,10 @@ def hello():
 
     parser(url, low_price, top_price)
     # app.run(debug=True)
-
-    return "data is sended"
+    res = jsonify({"message": "data is sended"})
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res
+    # return "data is sended"
 
 
 
